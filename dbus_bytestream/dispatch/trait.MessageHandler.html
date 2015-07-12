@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MessageHandler` trait in crate `dbus_bytestream`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MessageHandler">
+
+    <title>dbus_bytestream::dispatch::MessageHandler - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>dispatch</a></p><script>window.sidebarCurrent = {name: 'MessageHandler', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>dispatch</a>::<wbr><a class='trait' href=''>MessageHandler</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-7809' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#119-126' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait MessageHandler {
+    fn <a href='#tymethod.handle_message' class='fnname'>handle_message</a>&lt;T: <a class='trait' href='../../dbus_bytestream/connection/trait.MessageSender.html' title='dbus_bytestream::connection::MessageSender'>MessageSender</a>&gt;(&amp;mut self, sender: &amp;mut T, msg: <a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>) -&gt; <a class='type' href='../../dbus_bytestream/dispatch/type.HandlerResult.html' title='dbus_bytestream::dispatch::HandlerResult'>HandlerResult</a>;
+}</pre><div class='docblock'><p>Dispatches messages. Multiple message handlers can be chained.</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.handle_message' class='method stab '><code>fn <a href='#tymethod.handle_message' class='fnname'>handle_message</a>&lt;T: <a class='trait' href='../../dbus_bytestream/connection/trait.MessageSender.html' title='dbus_bytestream::connection::MessageSender'>MessageSender</a>&gt;(&amp;mut self, sender: &amp;mut T, msg: <a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>) -&gt; <a class='type' href='../../dbus_bytestream/dispatch/type.HandlerResult.html' title='dbus_bytestream::dispatch::HandlerResult'>HandlerResult</a></code></h3><div class='docblock'><p>Dispatches one message</p>
+
+<p>Handled messages are consumed and Ok(Ok(())) is returned.
+Invalid messages that fail to decode push a DBus error message to the sender and return Ok(Err(String)).
+Unhandled but valid messages are returned as Err(Message) to allow chaining dispatchers.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;'k, 'v&gt; <a class='trait' href='../../dbus_bytestream/dispatch/trait.MessageHandler.html' title='dbus_bytestream::dispatch::MessageHandler'>MessageHandler</a> for <a class='struct' href='../../dbus_bytestream/dispatch/struct.MessageDispatcher.html' title='dbus_bytestream::dispatch::MessageDispatcher'>MessageDispatcher</a>&lt;'k, 'v&gt;</code></li>
+<li><code>impl <a class='trait' href='../../dbus_bytestream/dispatch/trait.MessageHandler.html' title='dbus_bytestream::dispatch::MessageHandler'>MessageHandler</a> for <a class='struct' href='../../dbus_bytestream/dispatch/struct.NoMatchHandler.html' title='dbus_bytestream::dispatch::NoMatchHandler'>NoMatchHandler</a></code></li>
+</ul><script type="text/javascript" async
+                              src="../../implementors/dbus_bytestream/dispatch/trait.MessageHandler.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dbus_bytestream";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

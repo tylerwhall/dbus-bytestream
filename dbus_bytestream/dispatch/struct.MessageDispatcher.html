@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MessageDispatcher` struct in crate `dbus_bytestream`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MessageDispatcher">
+
+    <title>dbus_bytestream::dispatch::MessageDispatcher - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>dispatch</a></p><script>window.sidebarCurrent = {name: 'MessageDispatcher', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>dispatch</a>::<wbr><a class='struct' href=''>MessageDispatcher</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-8067' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#148-151' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MessageDispatcher&lt;'k, 'v&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>Dispatches incoming signals and method calls</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'k, 'v&gt; <a class='struct' href='../../dbus_bytestream/dispatch/struct.MessageDispatcher.html' title='dbus_bytestream::dispatch::MessageDispatcher'>MessageDispatcher</a>&lt;'k, 'v&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></h4>
+<h4 id='method.add_signal' class='method'><code>fn <a href='#method.add_signal' class='fnname'>add_signal</a>(&amp;mut self, path: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, interface: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, member: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, cl: <a class='type' href='../../dbus_bytestream/dispatch/type.SignalHandler.html' title='dbus_bytestream::dispatch::SignalHandler'>SignalHandler</a>&lt;'v&gt;)</code></h4>
+<h4 id='method.add_method' class='method'><code>fn <a href='#method.add_method' class='fnname'>add_method</a>(&amp;mut self, path: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, interface: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, member: <a class='enum' href='http://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'k, <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;, cl: <a class='type' href='../../dbus_bytestream/dispatch/type.MethodHandler.html' title='dbus_bytestream::dispatch::MethodHandler'>MethodHandler</a>&lt;'v&gt;)</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'k, 'v&gt; <a class='trait' href='../../dbus_bytestream/dispatch/trait.MessageHandler.html' title='dbus_bytestream::dispatch::MessageHandler'>MessageHandler</a> for <a class='struct' href='../../dbus_bytestream/dispatch/struct.MessageDispatcher.html' title='dbus_bytestream::dispatch::MessageDispatcher'>MessageDispatcher</a>&lt;'k, 'v&gt;</code></h3><div class='impl-items'><h4 id='method.handle_message' class='method'><code>fn <a href='../../dbus_bytestream/dispatch/trait.MessageHandler.html#method.handle_message' class='fnname'>handle_message</a>&lt;T: <a class='trait' href='../../dbus_bytestream/connection/trait.MessageSender.html' title='dbus_bytestream::connection::MessageSender'>MessageSender</a>&gt;(&amp;mut self, sender: &amp;mut T, msg: <a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>) -&gt; <a class='type' href='../../dbus_bytestream/dispatch/type.HandlerResult.html' title='dbus_bytestream::dispatch::HandlerResult'>HandlerResult</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'k, 'v&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> for <a class='struct' href='../../dbus_bytestream/dispatch/struct.MessageDispatcher.html' title='dbus_bytestream::dispatch::MessageDispatcher'>MessageDispatcher</a>&lt;'k, 'v&gt;</code></h3><div class='impl-items'><h4 id='method.default' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/default/trait.Default.html#method.default' class='fnname'>default</a>() -&gt; <a class='struct' href='../../dbus_bytestream/dispatch/struct.MessageDispatcher.html' title='dbus_bytestream::dispatch::MessageDispatcher'>MessageDispatcher</a>&lt;'k, 'v&gt;</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dbus_bytestream";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

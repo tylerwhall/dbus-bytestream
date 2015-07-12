@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Connection` struct in crate `dbus_bytestream`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Connection">
+
+    <title>dbus_bytestream::connection::Connection - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>connection</a></p><script>window.sidebarCurrent = {name: 'Connection', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dbus_bytestream</a>::<wbr><a href='index.html'>connection</a>::<wbr><a class='struct' href=''>Connection</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-4283' class='srclink' href='../../src/dbus_bytestream/connection.rs.html#57-61' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Connection {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a></code></h3><div class='impl-items'><h4 id='method.connect' class='method'><code>fn <a href='#method.connect' class='fnname'>connect</a>(addr: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Connects to a DBus address string.</p>
+</div><h4 id='method.connect_system' class='method'><code>fn <a href='#method.connect_system' class='fnname'>connect_system</a>() -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Connects to the system bus.</p>
+
+<p>The address is specified by the environment variable
+DBUS_SYSTEM_BUS_ADDRESS or &quot;unix:path=/var/run/dbus/system_bus_socket&quot; if unset.</p>
+</div><h4 id='method.connect_session' class='method'><code>fn <a href='#method.connect_session' class='fnname'>connect_session</a>() -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Connects to the session bus.</p>
+
+<p>The address is specified by the environment variable DBUS_SESSION_BUS_ADDRESS.</p>
+</div><h4 id='method.connect_uds' class='method'><code>fn <a href='#method.connect_uds' class='fnname'>connect_uds</a>&lt;P: <a class='trait' href='http://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>&gt;&gt;(addr: P) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Creates a Connection object using a UNIX domain socket as the transport.  The addr is the
+path to connect to.  Abstract paths can be used by passing a NUL byte as the first byte of
+addr.</p>
+</div><h4 id='method.connect_tcp' class='method'><code>fn <a href='#method.connect_tcp' class='fnname'>connect_tcp</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/std/net/addr/trait.ToSocketAddrs.html' title='std::net::addr::ToSocketAddrs'>ToSocketAddrs</a>&gt;(addr: T) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Creates a Connection object using a TCP socket as the transport.  The addr is the host and
+port to connect to.</p>
+</div><h4 id='method.read_msg' class='method'><code>fn <a href='#method.read_msg' class='fnname'>read_msg</a>(&amp;mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Blocks until a message comes in from the message bus.  The received message is returned.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../../dbus_bytestream/connection/trait.MessageSender.html' title='dbus_bytestream::connection::MessageSender'>MessageSender</a> for <a class='struct' href='../../dbus_bytestream/connection/struct.Connection.html' title='dbus_bytestream::connection::Connection'>Connection</a></code></h3><div class='impl-items'><h4 id='method.send' class='method'><code>fn <a href='../../dbus_bytestream/connection/trait.MessageSender.html#method.send' class='fnname'>send</a>(&amp;mut self, mbuf: &amp;mut <a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+<h4 id='method.call_sync' class='method'><code>fn <a href='../../dbus_bytestream/connection/trait.MessageSender.html#method.call_sync' class='fnname'>call_sync</a>(&amp;mut self, mbuf: &amp;mut <a class='struct' href='../../dbus_bytestream/message/struct.Message.html' title='dbus_bytestream::message::Message'>Message</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='enum' href='../../dbus_serialize/types/enum.Value.html' title='dbus_serialize::types::Value'>Value</a>&gt;&gt;, <a class='enum' href='../../dbus_bytestream/connection/enum.Error.html' title='dbus_bytestream::connection::Error'>Error</a>&gt;</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dbus_bytestream";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

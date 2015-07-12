@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `message` mod in crate `dbus_bytestream`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, message">
+
+    <title>dbus_bytestream::message - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dbus_bytestream</a></p><script>window.sidebarCurrent = {name: 'message', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>dbus_bytestream</a>::<wbr><a class='mod' href=''>message</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-3127' class='srclink' href='../../src/dbus_bytestream/message.rs.html#1-248' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Functions for creating and modifying messages to send across the message bus.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.HeaderField.html'
+                               title='dbus_bytestream::message::HeaderField'>HeaderField</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.Message.html'
+                               title='dbus_bytestream::message::Message'>Message</a></td>
+                        <td class='docblock short'>
+                             <p>Represents a received message from the message bus</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MessageType.html'
+                               title='dbus_bytestream::message::MessageType'>MessageType</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FLAGS_NO_REPLY_EXPECTED.html'
+                               title='dbus_bytestream::message::FLAGS_NO_REPLY_EXPECTED'>FLAGS_NO_REPLY_EXPECTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_DESTINATION.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_DESTINATION'>HEADER_FIELD_DESTINATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_ERROR_NAME.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_ERROR_NAME'>HEADER_FIELD_ERROR_NAME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_INTERFACE.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_INTERFACE'>HEADER_FIELD_INTERFACE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_INVALID.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_INVALID'>HEADER_FIELD_INVALID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_MEMBER.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_MEMBER'>HEADER_FIELD_MEMBER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_PATH.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_PATH'>HEADER_FIELD_PATH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_REPLY_SERIAL.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_REPLY_SERIAL'>HEADER_FIELD_REPLY_SERIAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_SENDER.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_SENDER'>HEADER_FIELD_SENDER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HEADER_FIELD_SIGNATURE.html'
+                               title='dbus_bytestream::message::HEADER_FIELD_SIGNATURE'>HEADER_FIELD_SIGNATURE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MESSAGE_TYPE_ERROR.html'
+                               title='dbus_bytestream::message::MESSAGE_TYPE_ERROR'>MESSAGE_TYPE_ERROR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MESSAGE_TYPE_INVALID.html'
+                               title='dbus_bytestream::message::MESSAGE_TYPE_INVALID'>MESSAGE_TYPE_INVALID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MESSAGE_TYPE_METHOD_CALL.html'
+                               title='dbus_bytestream::message::MESSAGE_TYPE_METHOD_CALL'>MESSAGE_TYPE_METHOD_CALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MESSAGE_TYPE_METHOD_RETURN.html'
+                               title='dbus_bytestream::message::MESSAGE_TYPE_METHOD_RETURN'>MESSAGE_TYPE_METHOD_RETURN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MESSAGE_TYPE_SIGNAL.html'
+                               title='dbus_bytestream::message::MESSAGE_TYPE_SIGNAL'>MESSAGE_TYPE_SIGNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.create_error.html'
+                               title='dbus_bytestream::message::create_error'>create_error</a></td>
+                        <td class='docblock short'>
+                             <p>Create a Message for a D-Bus error.  Once created, return values can be added
+with Message.add_arg</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.create_method_call.html'
+                               title='dbus_bytestream::message::create_method_call'>create_method_call</a></td>
+                        <td class='docblock short'>
+                             <p>Create a Message for a D-Bus method call.  Once a Message is created, arguments
+can be added with Message.add_arg</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.create_method_return.html'
+                               title='dbus_bytestream::message::create_method_return'>create_method_return</a></td>
+                        <td class='docblock short'>
+                             <p>Create a Message for a D-Bus method return.  Once created, return values can be added
+with Message.add_arg</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='fn' href='fn.create_signal.html'
+                               title='dbus_bytestream::message::create_signal'>create_signal</a></td>
+                        <td class='docblock short'>
+                             <p>Create a Message for a D-Bus signal.  Once created, return values can be added
+with Message.add_arg</p>
+
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dbus_bytestream";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
