@@ -81,6 +81,7 @@ use message::Message;
 
 pub mod message_types;
 use self::message_types::*;
+pub mod wrapper;
 
 #[test]
 fn test_decode_message() {
