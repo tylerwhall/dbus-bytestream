@@ -45,16 +45,17 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-6859' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#1-373' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-6872' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#1-442' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Routes incoming messages to registered handlers</p>
 
 <h1 id="examples" class='section-header'><a
                            href="#examples">Examples</a></h1>
 <p>Getting a callback from a method call</p>
-<pre id='rust-example-rendered' class='rust '>
+<pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>Cell</span>;
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>connection</span>::{<span class='ident'>Connection</span>, <span class='ident'>MessageSender</span>};
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>dispatch</span>::{<span class='ident'>MessageDispatcher</span>, <span class='ident'>MessageHandler</span>};
+<span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>dispatch</span>::<span class='ident'>MethodRetVal</span>::<span class='ident'>EmptyReply</span>;
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>message</span>;
 
 <span class='comment'>// Simulated incoming method call</span>
@@ -66,12 +67,12 @@
 
 <span class='comment'>// Register a boxed closure with a method call</span>
 <span class='ident'>dis</span>.<span class='ident'>add_method</span>(<span class='string'>&quot;path&quot;</span>.<span class='ident'>into</span>(), <span class='string'>&quot;interface&quot;</span>.<span class='ident'>into</span>(), <span class='string'>&quot;method&quot;</span>.<span class='ident'>into</span>(),
-                <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='op'>|</span><span class='ident'>mth</span><span class='op'>|</span> {
+                <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='op'>|</span><span class='ident'>_sender</span>, <span class='ident'>mth</span><span class='op'>|</span> {
                     <span class='ident'>mth_called</span>.<span class='ident'>set</span>(<span class='boolval'>true</span>);
                     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mth</span>.<span class='ident'>path</span>, <span class='string'>&quot;path&quot;</span>);
                     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mth</span>.<span class='ident'>interface</span>, <span class='string'>&quot;interface&quot;</span>);
                     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>mth</span>.<span class='ident'>member</span>, <span class='string'>&quot;method&quot;</span>);
-                    <span class='prelude-val'>Ok</span>(())
+                    <span class='prelude-val'>Ok</span>(<span class='ident'>EmptyReply</span>)
                 } ));
 
 <span class='comment'>/* Handle one method call */</span>
@@ -81,7 +82,7 @@
 </pre>
 
 <p>Chaining multiple message handlers</p>
-<pre id='rust-example-rendered' class='rust '>
+<pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>connection</span>::{<span class='ident'>Connection</span>, <span class='ident'>MessageSender</span>};
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>dispatch</span>::{<span class='ident'>HandlerChain</span>, <span class='ident'>MessageDispatcher</span>,
                                 <span class='ident'>MessageHandler</span>, <span class='ident'>NoMatchHandler</span>};
@@ -131,6 +132,15 @@
                     </tr>
                 
                     <tr class=' module-item'>
+                        <td><a class='struct' href='struct.MessageSenderWrapper.html'
+                               title='dbus_bytestream::dispatch::MessageSenderWrapper'>MessageSenderWrapper</a></td>
+                        <td class='docblock short'>
+                             <p>Wrapper around a MessageSender trait object to work around a compiler bug</p>
+
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
                         <td><a class='struct' href='struct.NoMatchHandler.html'
                                title='dbus_bytestream::dispatch::NoMatchHandler'>NoMatchHandler</a></td>
                         <td class='docblock short'>
@@ -143,6 +153,14 @@
                     <tr class=' module-item'>
                         <td><a class='enum' href='enum.DispatchError.html'
                                title='dbus_bytestream::dispatch::DispatchError'>DispatchError</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.MethodRetVal.html'
+                               title='dbus_bytestream::dispatch::MethodRetVal'>MethodRetVal</a></td>
                         <td class='docblock short'>
                              
                         </td>

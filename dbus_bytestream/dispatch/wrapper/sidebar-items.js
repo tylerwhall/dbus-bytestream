@@ -1,1 +1,1 @@
-initSidebarItems({});
+initSidebarItems({"type":[["HandlerError",""],["MethodReturn","Return value for method handler functions"],["SignalReturn","Return value for signal handler functions"]]});

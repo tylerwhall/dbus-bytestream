@@ -172,6 +172,29 @@
 <span id="130">130</span>
 <span id="131">131</span>
 <span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Specific struct representations of DBus message types</span>
 <span class='kw'>use</span> <span class='ident'>dbus_serialize</span>::<span class='ident'>types</span>::<span class='ident'>Value</span>;
@@ -233,6 +256,25 @@
     }
 }
 
+<span class='doccomment'>/// An unpacked, validated DBus method call</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>MethodReturn</span> {
+    <span class='kw'>pub</span> <span class='ident'>reply_serial</span>: <span class='ident'>u32</span>,
+    <span class='kw'>pub</span> <span class='ident'>opt</span>: <span class='ident'>OptionalHeaderFields</span>,
+    <span class='kw'>pub</span> <span class='ident'>body</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Value</span><span class='op'>&gt;&gt;</span>
+}
+
+<span class='kw'>impl</span> <span class='ident'>MethodReturn</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>msg</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Message</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='kw'>Self</span>, <span class='ident'>MessageDecodeError</span><span class='op'>&gt;</span> {
+        <span class='prelude-val'>Ok</span>(<span class='ident'>MethodReturn</span> {
+            <span class='ident'>reply_serial</span>: <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>msg</span>.<span class='ident'>decode_header_field</span>(<span class='ident'>message</span>::<span class='ident'>HEADER_FIELD_REPLY_SERIAL</span>)
+                            .<span class='ident'>ok_or</span>(<span class='ident'>MessageDecodeError</span>::<span class='ident'>BadReplySerial</span>)),
+            <span class='ident'>opt</span>: <span class='ident'>OptionalHeaderFields</span>::<span class='ident'>new</span>(<span class='ident'>msg</span>),
+            <span class='ident'>body</span>: <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>msg</span>.<span class='ident'>get_body</span>()
+                            .<span class='ident'>map_err</span>(<span class='op'>|</span>_<span class='op'>|</span> <span class='ident'>MessageDecodeError</span>::<span class='ident'>BadBody</span>)),
+        })
+    }
+}
 
 <span class='doccomment'>/// An unpacked, validated DBus signal</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
@@ -286,6 +328,7 @@
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>MessageType</span> {
     <span class='ident'>Method</span>(<span class='ident'>MethodCall</span>),
+    <span class='ident'>MethodReturn</span>(<span class='ident'>MethodReturn</span>),
     <span class='ident'>Signal</span>(<span class='ident'>Signal</span>),
     <span class='ident'>Error</span>(<span class='ident'>Error</span>),
 }
@@ -295,6 +338,9 @@
     <span class='kw'>match</span> <span class='ident'>msg</span>.<span class='ident'>message_type</span> {
         <span class='ident'>message</span>::<span class='ident'>MESSAGE_TYPE_METHOD_CALL</span> <span class='op'>=&gt;</span>
             <span class='prelude-val'>Ok</span>(<span class='ident'>MessageType</span>::<span class='ident'>Method</span>(<span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>MethodCall</span>::<span class='ident'>new</span>(<span class='ident'>msg</span>)))),
+
+        <span class='ident'>message</span>::<span class='ident'>MESSAGE_TYPE_METHOD_RETURN</span> <span class='op'>=&gt;</span>
+            <span class='prelude-val'>Ok</span>(<span class='ident'>MessageType</span>::<span class='ident'>MethodReturn</span>(<span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>MethodReturn</span>::<span class='ident'>new</span>(<span class='ident'>msg</span>)))),
 
         <span class='ident'>message</span>::<span class='ident'>MESSAGE_TYPE_SIGNAL</span> <span class='op'>=&gt;</span>
             <span class='prelude-val'>Ok</span>(<span class='ident'>MessageType</span>::<span class='ident'>Signal</span>(<span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>Signal</span>::<span class='ident'>new</span>(<span class='ident'>msg</span>)))),

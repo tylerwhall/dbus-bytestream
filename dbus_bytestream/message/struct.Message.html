@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-3406' class='srclink' href='../../src/dbus_bytestream/message.rs.html#54-62' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-3409' class='srclink' href='../../src/dbus_bytestream/message.rs.html#54-62' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Message {
     pub big_endian: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>,
     pub message_type: <a class='struct' href='../../dbus_bytestream/message/struct.MessageType.html' title='dbus_bytestream::message::MessageType'>MessageType</a>,
@@ -71,7 +71,7 @@ dbus_serialize::types::Value enum.</p>
 <p>Note that these calls can be chained together to add multiple arguments, see the example</p>
 
 <h1 id="examples" class='section-header'><a
-                           href="#examples">Examples</a></h1><pre id='rust-example-rendered' class='rust '>
+                           href="#examples">Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='ident'>dbus_bytestream</span>::<span class='ident'>message</span>::<span class='ident'>create_method_call</span>(<span class='string'>&quot;foo&quot;</span>, <span class='string'>&quot;/bar&quot;</span>, <span class='string'>&quot;baz&quot;</span>, <span class='string'>&quot;bloop&quot;</span>)
     .<span class='ident'>add_arg</span>(<span class='kw-2'>&amp;</span><span class='number'>1</span>)
     .<span class='ident'>add_arg</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;string&quot;</span>);

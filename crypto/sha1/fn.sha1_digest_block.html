@@ -80,7 +80,7 @@ of the SHA-1 algorithm and how it relates to the mathematical definition.</p>
 
 <p>The schedule-related functions can be used to easily perform 4 rounds
 of the message work schedule update calculation, as shown below:</p>
-<pre id='rust-example-rendered' class='rust '>
+<pre class='rust rust-example-rendered'>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>schedule_x4</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v0</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v1</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v2</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v3</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> (
         <span class='ident'>sha1msg2</span>(<span class='ident'>sha1msg1</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v0</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v1</span>) <span class='op'>^</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v2</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>v3</span>)
