@@ -1,10 +1,13 @@
 //! Functions for creating and modifying messages to send across the message bus.
 use std::ops::DerefMut;
 
+use dbus_serialize::decoder::DBusDecoder;
 use dbus_serialize::types::{Path,Variant,Value,BasicValue,Signature};
 
 use marshal::{Marshal,pad_to_multiple};
 use demarshal::{demarshal,DemarshalError};
+
+use rustc_serialize::Decodable;
 
 #[derive(Debug,Default,PartialEq)]
 pub struct MessageType(pub u8);
@@ -189,6 +192,13 @@ impl Message {
             Some(idx) => Some(&mut self.headers[idx].1),
             _ => None
         }
+    }
+
+    pub fn decode_header_field<T: Decodable>(&mut self, name: u8) -> Option<T> {
+        self.get_header(name).map(|v| *v.object.clone())
+            .and_then(|val| {
+                DBusDecoder::decode(val).ok()
+            })
     }
 
     pub fn add_header(mut self, name: u8, val: Variant) -> Message {
