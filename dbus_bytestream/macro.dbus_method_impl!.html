@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `dbus_signal_impl!` macro in crate `dbus_bytestream`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, dbus_signal_impl!">
+    <meta name="description" content="API documentation for the Rust `dbus_method_impl!` macro in crate `dbus_bytestream`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, dbus_method_impl!">
 
-    <title>dbus_bytestream::dbus_signal_impl! - Rust</title>
+    <title>dbus_bytestream::dbus_method_impl! - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>dbus_bytestream</a></p><script>window.sidebarCurrent = {name: 'dbus_signal_impl!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>dbus_bytestream</a></p><script>window.sidebarCurrent = {name: 'dbus_method_impl!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -41,21 +41,21 @@
     </nav>
 
     <section id='main' class="content macro">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>dbus_bytestream</a>::<wbr><a class='macro' href=''>dbus_signal_impl!</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'><a href='index.html'>dbus_bytestream</a>::<wbr><a class='macro' href=''>dbus_method_impl!</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-11652' class='srclink' href='../src/dbus_bytestream/dispatch/wrapper.rs.html#203-209' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-11653' class='srclink' href='../src/dbus_bytestream/dispatch/wrapper.rs.html#215-221' title='goto source code'>[src]</a></span></h1>
 <pre class='rust macro'>
-<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>dbus_signal_impl</span> {
+<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>dbus_method_impl</span> {
     ( <span class='kw'>impl</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>structname</span>:<span class='ident'>ident</span> {
           $( <span class='kw'>fn</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>fname</span>:<span class='ident'>ident</span>(<span class='kw-2'>&amp;</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_self</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>sender</span>:<span class='ident'>ident</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>MessageSender</span> $(,<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>:<span class='ident'>ident</span> : <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>:<span class='ident'>ty</span>),<span class='op'>*</span> ) <span class='op'>-&gt;</span>
-                <span class='ident'>SignalReturn</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>body</span>:<span class='ident'>block</span> )<span class='op'>*</span>
-      } ) <span class='op'>=&gt;</span> { <span class='macro'>dbus_handlers</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>structname</span>, <span class='ident'>Signal</span>, <span class='ident'>SignalHandler</span>, <span class='ident'>get_signal_handlers</span>,
-               $( <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>fname</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>body</span>, <span class='ident'>SignalReturn</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_self</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>sender</span>, ( $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span> : <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>),<span class='op'>*</span> ) ),<span class='op'>*</span> ); };
+                <span class='ident'>MethodReturn</span><span class='op'>&lt;</span>$( <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rok</span>:<span class='ident'>ty</span> ),<span class='op'>*</span><span class='op'>&gt;</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>body</span>:<span class='ident'>block</span> )<span class='op'>*</span>
+      } ) <span class='op'>=&gt;</span> { <span class='macro'>dbus_handlers</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>structname</span>, <span class='ident'>MethodCall</span>, <span class='ident'>MethodHandler</span>, <span class='ident'>get_method_handlers</span>,
+               $( <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>fname</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>body</span>, <span class='ident'>MethodReturn</span><span class='op'>&lt;</span>$( <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rok</span> ),<span class='op'>*</span><span class='op'>&gt;</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>_self</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>sender</span>, ( $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span> : <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>),<span class='op'>*</span> ) ),<span class='op'>*</span> ); };
 }
 </pre>
-<div class='docblock'><p>Implements signal handlers from native Rust functions.</p>
+<div class='docblock'><p>Implements method call handlers from native Rust functions.</p>
 
 <p>See the <a href="dispatch/wrapper/index.html">module level documentation</a> for examples.</p>
 </div></section>

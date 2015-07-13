@@ -45,12 +45,24 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-6872' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#1-442' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-6832' class='srclink' href='../../src/dbus_bytestream/dispatch/mod.rs.html#1-458' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Routes incoming messages to registered handlers</p>
+
+<p>A message handler can be invoked in an application&#39;s main loop to consume
+messages and route them to registered callbacks. Callbacks are routed based on
+their object, interface, and member paths used when registered.</p>
+
+<p>Some basic validation is performed to guarantee that all required parts for the
+message for a given message type are valid and present.  Error messages to
+deliver to the bus are generated when validation fails.</p>
+
+<p>This currently only handles signals and method calls. It should be extended to
+support method returns and errors to be dispatched by reply_serial.  There is
+also not yet a deregistration interface.</p>
 
 <h1 id="examples" class='section-header'><a
                            href="#examples">Examples</a></h1>
-<p>Getting a callback from a method call</p>
+<p>Dispatching a method call to a closure</p>
 <pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>Cell</span>;
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>connection</span>::{<span class='ident'>Connection</span>, <span class='ident'>MessageSender</span>};
@@ -82,6 +94,10 @@
 </pre>
 
 <p>Chaining multiple message handlers</p>
+
+<p>Messages that are not handled by a MessageHandler can be passed to another.
+Putting a NoMatchHandler at the end of the chain will consume the message and
+send an UnknownObject error back to the bus.</p>
 <pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>connection</span>::{<span class='ident'>Connection</span>, <span class='ident'>MessageSender</span>};
 <span class='kw'>use</span> <span class='ident'>dbus_bytestream</span>::<span class='ident'>dispatch</span>::{<span class='ident'>HandlerChain</span>, <span class='ident'>MessageDispatcher</span>,
@@ -116,7 +132,7 @@
                         <td><a class='mod' href='wrapper/index.html'
                                title='dbus_bytestream::dispatch::wrapper'>wrapper</a></td>
                         <td class='docblock short'>
-                             <p>Macros to generate message handlers from Rust impl blocks.</p>
+                             <p>Macros to generate method call and signal handlers from Rust impl blocks.</p>
 
                         </td>
                     </tr>
